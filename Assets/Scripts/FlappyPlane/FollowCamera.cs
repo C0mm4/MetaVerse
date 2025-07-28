@@ -15,7 +15,7 @@ namespace FlappyPlane
         {
             if (target == null)
                 return;
-
+            // 초기 카메라와 타겟의 거리 저장
             offsetX = transform.position.x - target.position.x;
 
         }
@@ -25,6 +25,7 @@ namespace FlappyPlane
         {
             if (target == null) return;
 
+            // 저장된 거리만큼 카메라 위치
             Vector3 pos = transform.position;
             pos.x = target.position.x + offsetX;
             transform.position = pos;

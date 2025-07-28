@@ -34,6 +34,7 @@ namespace FlappyPlane
 
         public void RestartGame()
         {
+            // 0번 씬으로 이동
             SceneManager.LoadScene(0);
         }
 

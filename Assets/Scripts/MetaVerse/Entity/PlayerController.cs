@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : EntityController
 {
 
+    // 키 입력 이벤트들
     private void OnMove(InputValue inputValue)
     {
         moveDirection = inputValue.Get<Vector2>();

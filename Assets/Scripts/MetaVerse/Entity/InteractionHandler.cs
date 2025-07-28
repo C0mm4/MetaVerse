@@ -17,13 +17,14 @@ public class InteractionHandler : MonoBehaviour
         {
             var targetHandler = collision.GetComponent<InteractionHandler>();
 
-            // Remove old Interaction target
+            // 이전 InteractionHandler 정보 제거
             if(closeInteractor != null)
             {
                 OnInteraction -= closeInteractor.Interaction;
                 closeInteractor.ExitTriggerRange();
             }
 
+            // InteractionHandler 정보 추가
             closeInteractor = targetHandler;
             OnInteraction += targetHandler.Interaction;
             targetHandler.EnterTriggerRange();
@@ -37,6 +38,7 @@ public class InteractionHandler : MonoBehaviour
             var targetHandler = collision.GetComponent<InteractionHandler>();
             if(targetHandler == closeInteractor)
             {
+                // InteractionHandler가 현재 저장된 객체일 시 해당 정보 삭제
                 OnInteraction -= targetHandler.Interaction;
                 targetHandler.ExitTriggerRange();
                 closeInteractor = null;
@@ -52,11 +54,13 @@ public class InteractionHandler : MonoBehaviour
 
     public virtual void EnterTriggerRange()
     {
+        // 상호작용 UI 오브젝트 설정
         textUI?.gameObject.SetActive(true);
     }
 
     public virtual void ExitTriggerRange()
     {
+        // 상호작용 UI 오브젝트 설정
         textUI?.gameObject.SetActive(false);
     }
 }

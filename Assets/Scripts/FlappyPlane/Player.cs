@@ -43,6 +43,7 @@ namespace FlappyPlane
             {
                 if (deathCooldown <= 0)
                 {
+                    // 죽었을 때 입력 받으면 Restart
                     if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
                     {
                         GameManager.Instance.RestartGame();
@@ -55,6 +56,7 @@ namespace FlappyPlane
             }
             else
             {
+                // 입력시 Flap
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
                 {
                     isFlap = true;
@@ -69,6 +71,7 @@ namespace FlappyPlane
             Vector3 velocity = body.velocity;
             velocity.x = forwardSpeed;
 
+            // Flap 시 상승 힘 추가
             if (isFlap)
             {
                 velocity.y += flapForce;

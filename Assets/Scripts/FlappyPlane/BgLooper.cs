@@ -12,13 +12,13 @@ namespace FlappyPlane
         public int numBgCount = 5;
 
 
-        // Start is called before the first frame update
         void Start()
         {
             Obstacle[] obstacles = GameObject.FindObjectsOfType<Obstacle>();
             obstacleLastPosition = obstacles[0].transform.position;
             obstacleCount = obstacles.Length;
 
+            // 장애물 위치 초기화
             for (int i = 0; i < obstacleCount; i++)
             {
                 obstacleLastPosition = obstacles[i].SetRandomPlace(obstacleLastPosition, obstacleCount);
@@ -28,6 +28,7 @@ namespace FlappyPlane
         public void OnTriggerEnter2D(Collider2D collision)
         {
             Obstacle obstacle = collision.GetComponent<Obstacle>();
+            // 장애물이나 배경 객체 충돌 시 다음 위치로 이동
             if (obstacle)
             {
                 obstacleLastPosition = obstacle.SetRandomPlace(obstacleLastPosition, obstacleCount);

@@ -62,6 +62,9 @@ public class EntityController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 점프 핸들러 메소드
+    /// </summary>
     protected virtual void HandleJump()
     {
         if (isJumpPressed && canJump)
@@ -72,14 +75,20 @@ public class EntityController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 상호작용 핸들러 메소드
+    /// </summary>
     protected virtual void HandleInteract()
     {
         if (isFPressed)
         {
+            // 오브젝트에 InteractHandler가 있으면 실행
             if(interactionHandler != null)
             {
+                // OnInteraction의 Action 실행
                 interactionHandler.OnInteraction?.Invoke();
             }
+            // 1회성 실행
             isFPressed = false;
         }
     }
