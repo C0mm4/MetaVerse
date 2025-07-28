@@ -22,10 +22,13 @@ public class PlayerController : EntityController
             lookDirection = lookDirection.normalized;
         }
     }
-
     private void OnJump(InputValue value)
     {
         isJumpPressed = value.isPressed;
+        if (!isJumpPressed)
+        {
+            canJump = true;
+        }
     }
 
     private void OnInteraction(InputValue value)

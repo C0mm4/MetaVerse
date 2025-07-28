@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using TopDownShooter;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EntityController : MonoBehaviour
@@ -20,6 +21,10 @@ public class EntityController : MonoBehaviour
     protected AnimationHandler animationHandler;
 
     protected bool isJumpPressed;
+    protected bool canJump;
+    [SerializeField]
+    private float jumpTime;
+
     protected bool isFPressed;
 
     protected InteractionHandler interactionHandler;
@@ -59,9 +64,11 @@ public class EntityController : MonoBehaviour
 
     protected virtual void HandleJump()
     {
-        if (isJumpPressed)
+        if (isJumpPressed && canJump)
         {
             animationHandler.Jump();
+            canJump = false;
+            Invoke("ResetJump", jumpTime);
         }
     }
 
@@ -84,5 +91,10 @@ public class EntityController : MonoBehaviour
 
         spriteRenderer.flipX = isleft;
 
+    }
+
+    void ResetJump()
+    {
+        canJump = true;
     }
 }
